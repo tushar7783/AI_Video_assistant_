@@ -3,10 +3,10 @@ import traceback
 from utils.audio_processor import process_input
 from core.transcriber import transcribe_all
 from core.summarizer import split_transcript ,generate_title,summarize
-
+from core.extractor import extract_action_items,extract_key_decisions,extract_questions
 if __name__=='__main__':
     try:
-        url="https://www.youtube.com/shorts/qGL05qUFQTM"
+        url="https://www.youtube.com/watch?v=pN-LfxNFiTc"
         # # download_youtube_audio(url)
         # data =download_youtube_audio(url)
         # # print(convert_to_wav(data))
@@ -24,7 +24,8 @@ if __name__=='__main__':
 
         # '''
         # print(split_transcript(text))
-        transcribe='''
+        # transcribe=
+        '''
 The Clockmaker of Oakhaven
 
 The brass gears of the Great Pendulum did not merely tick; they breathed.
@@ -39,9 +40,46 @@ The dome was frosted over from the outside, moonlight cutting through the rime t
 She wore a heavy travel cloak the color of wet slate, its hem caked in frozen mud. Her fingers—long, ink-stained, and bare of gloves—were pressed directly against the glass of the frozen dial, tracing a small, glowing rune that Julian had never carved into the brass.
 "Step away from the regulator," Julian said, his voice cracking slightly in the thin air. He gripped a heavy iron winding crank like a mace.
 The stranger did not startle. She turned slowly, her face illuminated by the amber glow of the internal counterweights. Her eyes were not brown or blue, but the pale, translucent amber of old clock crystals.
-        '''
+        # '''
+        chunks_list=process_input(url)
 
-        print(summarize(transcribe))
+        language="english"
+        transcribe=transcribe_all(chunks_list,language=language)
+        print("\n"+"="*60)
+        print("transcribe")
+        print("\n"+"="*60)
+        tittle=generate_title(transcribe)
+        summary=summarize(transcribe)
+        action_items=extract_action_items(transcribe)
+        decision=extract_key_decisions(transcribe)
+        questions=extract_questions(transcribe)
+
+
+        print("\n"+"="*60)
+        print (summary)
+        print("\n"+"="*60)
+
+        print("ACTION ITEMS")
+        print("="*60)
+        print(action_items)
+        print("\n"+"="*60)
+        
+        print("key decision")
+        print("="*60)
+        print(decision)
+        print("\n"+"="*60)
+        
+        print("open question")
+        print("="*60)
+        print(questions)
+        
+        
+
+
+
+
+
+        # print(summarize(transcribe))
         # print(generate_title())
         # chunks_list=process_input(url)
         # transcribe_text=transcribe_all(chunks_list,language=language)
