@@ -4,6 +4,9 @@ from utils.audio_processor import process_input
 from core.transcriber import transcribe_all
 from core.summarizer import split_transcript ,generate_title,summarize
 from core.extractor import extract_action_items,extract_key_decisions,extract_questions
+# from core.vector_store import get_embeddings
+from core.Rag_engine import build_rag_chain,ask_question
+
 if __name__=='__main__':
     try:
         url="https://www.youtube.com/watch?v=pN-LfxNFiTc"
@@ -24,9 +27,7 @@ if __name__=='__main__':
 
         # '''
         # print(split_transcript(text))
-        # transcribe=
-        '''
-The Clockmaker of Oakhaven
+        transcribe='''The Clockmaker of Oakhaven
 
 The brass gears of the Great Pendulum did not merely tick; they breathed.
 In the high, vaulted attic of the Oakhaven clock tower, Julian spent his nineteenth winter greasing pinions and balancing escapement wheels. Outside, the slate-grey roofs of the village were buried under three feet of January snow. Inside, the air smelled of machine oil, dried lavender, and centuries of accumulated dust.
@@ -41,37 +42,38 @@ She wore a heavy travel cloak the color of wet slate, its hem caked in frozen mu
 "Step away from the regulator," Julian said, his voice cracking slightly in the thin air. He gripped a heavy iron winding crank like a mace.
 The stranger did not startle. She turned slowly, her face illuminated by the amber glow of the internal counterweights. Her eyes were not brown or blue, but the pale, translucent amber of old clock crystals.
         # '''
-        chunks_list=process_input(url)
+        # -------------------------------------------------------------it was tested till the extractor--------------------------------------------------------------------------------------------
+        # chunks_list=process_input(url)
 
-        language="english"
-        transcribe=transcribe_all(chunks_list,language=language)
-        print("\n"+"="*60)
-        print("transcribe")
-        print("\n"+"="*60)
-        tittle=generate_title(transcribe)
-        summary=summarize(transcribe)
-        action_items=extract_action_items(transcribe)
-        decision=extract_key_decisions(transcribe)
-        questions=extract_questions(transcribe)
+        # language="english"
+        # transcribe=transcribe_all(chunks_list,language=language)
+        # print("\n"+"="*60)
+        # print("transcribe")
+        # print("\n"+"="*60)
+        # tittle=generate_title(transcribe)
+        # summary=summarize(transcribe)
+        # action_items=extract_action_items(transcribe)
+        # decision=extract_key_decisions(transcribe)
+        # questions=extract_questions(transcribe)
 
 
-        print("\n"+"="*60)
-        print (summary)
-        print("\n"+"="*60)
+        # print("\n"+"="*60)
+        # print (summary)
+        # print("\n"+"="*60)
 
-        print("ACTION ITEMS")
-        print("="*60)
-        print(action_items)
-        print("\n"+"="*60)
+        # print("ACTION ITEMS")
+        # print("="*60)
+        # print(action_items)
+        # print("\n"+"="*60)
         
-        print("key decision")
-        print("="*60)
-        print(decision)
-        print("\n"+"="*60)
+        # print("key decision")
+        # print("="*60)
+        # print(decision)
+        # print("\n"+"="*60)
         
-        print("open question")
-        print("="*60)
-        print(questions)
+        # print("open question")
+        # print("="*60)
+        # print(questions)
         
         
 
@@ -83,6 +85,16 @@ The stranger did not startle. She turned slowly, her face illuminated by the amb
         # print(generate_title())
         # chunks_list=process_input(url)
         # transcribe_text=transcribe_all(chunks_list,language=language)
+
+        # vvv
+
+        # -------------------------------------------------------------it was tested till the extractor--------------------------------------------------------------------------------------------
+
+
+# ----------------------------------------------------------------------------------------------Rag-testing-------------------------------------------------------------------------------------------------
+
+
+   
 
 
 

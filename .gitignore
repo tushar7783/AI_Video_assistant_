@@ -1,3 +1,5 @@
 .env
 downloads
 help.py
+__pycache__
+vector_db
